@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Hotelaria - Cadastrar Clientes</title>
+	<link href="Estilos.css" rel="stylesheet" type="text/css" />
+
+</h:head>
+<h:body>
+	<div class="page">
+		<div class="header">
+			<div class="title">
+				<h1>Sistema de Hotelaria - Cadastro de Clientes</h1>
+			</div>
+			<div class="loginDisplay">
+				<h5 style="margin-right: 10px;">
+					Bem-vindo(a),
+					<h:outputText value="#{usuarioForm.usuario.nome}"></h:outputText><br/>
+					<h:outputText value="#{usuarioForm.dataAtual}" style="color:white;"/>
+				</h5>
+			</div>
+			<div class="menu"></div>
+		</div>
+		<div class="main">
+			<h:form style="margin-left:10px;">
+				<p:outputLabel value="Perfil:"></p:outputLabel>
+				<br />
+				<p:selectOneRadio style="margin-top:10px;"
+					value="#{usuarioForm.usuarioCadastro.perfil}">
+
+					<f:selectItem itemLabel="Cliente" itemValue="Cliente"></f:selectItem>
+				</p:selectOneRadio>
+				<br />
+				<p:outputLabel value="Nome:"></p:outputLabel>
+				<br />
+				<p:inputText value="#{usuarioForm.usuarioCadastro.nome}"
+					style="margin-top:12px;margin-left:1px;" required="true"></p:inputText>
+				<br />
+				<p:outputLabel value="Login:"></p:outputLabel>
+				<br />
+				<p:inputText value="#{usuarioForm.usuarioCadastro.login}"
+					style="margin-top:10px;" required="true" validatorMessage="Login deve conter 4 ou mais letras!">
+					<f:validateLength minimum="4"></f:validateLength>
+					</p:inputText>
+				<br />
+				<p:outputLabel value="Senha:"></p:outputLabel>
+				<br />
+				<p:password value="#{usuarioForm.usuarioCadastro.senha}"
+					style="margin-top:10px;" required="true" id="password" validatorMessage="Senha deve ser alfanumérico!">
+					<f:validateRegex pattern="((?=.*\d)(?=.*[a-z]).{3,8})"></f:validateRegex>
+				</p:password>
+				<br />
+				<p:outputLabel value="Data de Nascimento:"></p:outputLabel>
+				<br />
+				<p:inputMask value="#{usuarioForm.usuarioCadastro.dataNascimento}"
+					mask="9999-99-99" style="margin-top:15px;">
+					<f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+				</p:inputMask><br/>
+				<h:commandButton value="Cadastrar"
+					style="margin-top:20px;background-color:#496077;color:white;"
+					action="#{usuarioForm.inserir}"></h:commandButton>
+					<h:messages></h:messages>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

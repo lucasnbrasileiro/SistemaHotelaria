@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Sistema de Hotelaria - Sessão Principal</title>
+	<link href="Estilos.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<div class="page">
+		<div class="header">
+			<div class="title">
+				<h1>Sistema de Hotelaria - Menu Principal</h1>
+			</div>
+			<div class="loginDisplay">
+				<h5 style="margin-right: 10px;">
+					Bem-vindo(a),
+					<h:outputText value="#{usuarioForm.usuario.nome}"></h:outputText>
+					<br />
+					<h:outputText value="#{usuarioForm.dataAtual}" style="color:white;" />
+				</h5>
+			</div>
+			<div class="menu"></div>
+		</div>
+		<div class="main">
+			<h:form>
+				<p:menu style="background-color:white;border:0px;">
+					<p:submenu label="Sessão Funcionário"
+						style="background-color:#ffffcc;color:black;">
+						<p:submenu label="Clientes"
+							style="background-color:#4b6c9e;color:white;">
+							<p:menuitem value="Cadastrar clientes"
+								action="#{usuarioForm.cadastroCliente}"></p:menuitem>
+							<p:menuitem value="Finalizar conta"
+								action="#{usuarioForm.finalizarContaClienteValidacao}"></p:menuitem>
+						</p:submenu>
+					</p:submenu>
+					<p:submenu label="Quartos e Aluguéis"
+						style="background-color:#4b6c9e;color:white;">
+						<p:menuitem value="Cadastrar quartos" action="#{quartoForm.cadastroQuarto}"></p:menuitem>
+						<p:menuitem value="Efetuar aluguel"
+							action="#{aluguelForm.cadastroAluguel}"></p:menuitem>
+						<p:menuitem value="Visualizar quartos alugados"
+							action="#{quartoForm.detalhesQuartoAlugado}"></p:menuitem>
+						<p:menuitem value="Visualizar todos os quartos"
+							action="#{quartoForm.detalhesQuartoDisponivel}"></p:menuitem>
+					</p:submenu>
+					<p:submenu label="Sessão Cliente"
+						style="background-color:#ffffcc;color:black;">
+						<p:submenu label="Consumo"
+							style="background-color:#4b6c9e;color:white;">
+							<p:menuitem value="Solicitar novo produto"
+								action="#{produtoForm.solicitaProdutoCliente}"></p:menuitem>
+						</p:submenu>
+						<p:submenu label="Estadia"
+							style="background-color:#4b6c9e;color:white;">
+							<p:menuitem value="Detalhes da conta"
+								action="#{consumoForm.validarDetalhesConta}"></p:menuitem>
+						</p:submenu>
+					</p:submenu>
+					<p:submenu label="Sessão Conta"
+						style="background-color:#ffffcc;color:black;">
+						<p:menuitem value="Sair" action="#{usuarioForm.logout}"></p:menuitem>
+					</p:submenu>
+				</p:menu>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

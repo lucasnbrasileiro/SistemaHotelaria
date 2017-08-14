@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Hotelaria - Visualizar Quartos Alugados</title>
+	<link href="Estilos.css" rel="stylesheet" type="text/css" />
+
+</h:head>
+<h:body>
+	<div class="page">
+		<div class="header">
+			<div class="title">
+				<h1>Sistema de Hotelaria - Encerrar Conta do Cliente</h1>
+			</div>
+			<div class="loginDisplay">
+				<h5 style="margin-right: 10px;">
+					Bem-vindo(a),
+					<h:outputText value="#{usuarioForm.usuario.nome}"></h:outputText><br/>
+					<h:outputText value="#{usuarioForm.dataAtual}" style="color:white;"/>
+				</h5>
+			</div>
+			<div class="menu"></div>
+		</div>
+		<div class="main">
+			<h:form style="margin-left:1px;" prependId="false" id="form">
+
+				<p:dataTable id="alugueis" var="alu"
+					value="#{aluguelForm.aluguelUsuario}">
+
+					<f:facet name="header">Detalhes da Estadia</f:facet>
+
+					<p:column headerText="Nome do Cliente"
+						style="width:24%;background-color:#496077;color:white;">
+						<h:outputText value="#{alu.usuario.nome}" />
+					</p:column>
+					
+					<p:column headerText="Número do Quarto"
+						style="width:24%;background-color:#496077;color:white;">
+						<h:outputText value="#{alu.quarto.numero}" />
+					</p:column>
+
+					<p:column headerText="Valor da Diária do Quarto Hospedado"
+						style="width:24%;background-color:#496077;color:white;">
+						<h:outputText value="#{alu.quarto.valorDiaria}" />
+					</p:column>
+
+				</p:dataTable>
+
+				<p:dataTable id="diarias" value="#{aluguelForm.diaria}" var="dia">
+
+					<p:column headerText="Número de Diárias"
+						style="width:24%;background-color:#496077;color:white;">
+						<h:outputText value="#{dia}" />
+					</p:column>
+
+				</p:dataTable>
+				<p:dataTable id="consumos" var="con" value="#{aluguelForm.consumos}">
+					<f:facet name="header">Detalhes do Consumo</f:facet>
+					<f:facet name="footer">Total Consumido:<h:outputText
+							value="#{aluguelForm.totalGasto}" />
+					</f:facet>
+
+					<p:column headerText="Produto Consumido"
+						style="width:24%;background-color:#496077;color:white;">
+						<h:outputText value="#{con.produto.nome}" />
+					</p:column>
+
+					<p:column headerText="Quantidade Solicitado"
+						style="width:24%;background-color:#496077;color:white;">
+						<h:outputText value="#{con.qtd}" />
+					</p:column>
+					<p:column headerText="Valor Unitário"
+						style="width:24%;background-color:#496077;color:white;">
+						<h:outputText value="#{con.produto.valor}" />
+					</p:column>
+				</p:dataTable>
+
+                <p:dataTable value="#{aluguelForm.totalPagar}" style="margin-top:30px;">
+                <p:column style="width:24%;background-color:#496077;color:white;">
+				<f:facet name="header">Custo Total da Estadia</f:facet>
+				<h:outputText value="#{aluguelForm.totalPagar}"></h:outputText>
+                </p:column>
+                </p:dataTable>
+				<h:commandButton value="Voltar"
+					style="margin-top:20px;background-color:#496077;color:white;"
+					action="#{usuarioForm.acessoSessao}"></h:commandButton>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

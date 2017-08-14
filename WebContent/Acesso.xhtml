@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Sistema de Hotelaria - Login</title>
+	<link href="Estilos.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<div class="page">
+		<div class="header">
+			<div class="title">
+				<h1>Sistema de Hotelaria - Fazer Login</h1>
+			</div>
+		</div>
+		<div class="menu"></div>
+		<div class="main">
+			<h2>Efetuar Login.</h2>
+			<p>Por favor entre com seu login e senha para acessar o sistema
+				como cliente ou administrador.</p>
+			<div class="conta">
+				<fieldset class="login">
+					<legend>Efetuar Login</legend>
+					<p>
+						<h:form id="formAcesso">
+							<p:outputLabel value="Login:" style="margin-right:4px;"></p:outputLabel>
+							<p:inputText value="#{usuarioForm.usuario.login}"
+								style="width:200px;"
+								validatorMessage="login incorreto ou vazio!"></p:inputText>
+							<br />
+							<p:outputLabel value="Senha:" style="margin-right:1px;"></p:outputLabel>
+							<p:password value="#{usuarioForm.usuario.senha}"
+								style="width:200px;margin-top:10px;"
+								validatorMessage="Senha incorreta ou vazia!"></p:password>
+							<br />
+							<p:commandButton value="Entrar"
+								action="#{usuarioForm.autenticar}"
+								style="margin-top:19px;width:80px;background-color:#496077;color:white;"></p:commandButton>
+							<h:commandButton value="Voltar"
+								action="#{usuarioForm.inicio}" 
+								style="margin-top:19px;width:80px;height:33px;background-color:#496077;color:white;"></h:commandButton>
+						</h:form>
+					</p>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

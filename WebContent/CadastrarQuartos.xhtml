@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Hotelaria - Cadastrar Quartos</title>
+	<link href="Estilos.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<div class="page">
+		<div class="header">
+			<div class="title">
+				<h1>Sistema de Hotelaria - Cadastro de Quartos</h1>
+			</div>
+			<div class="loginDisplay">
+				<h5 style="margin-right: 10px;">
+					Bem-vindo(a),
+					<h:outputText value="#{usuarioForm.usuario.nome}"></h:outputText>
+					<br />
+					<h:outputText value="#{usuarioForm.dataAtual}" style="color:white;" />
+				</h5>
+			</div>
+			<div class="menu"></div>
+		</div>
+		<div class="main">
+			<h:form style="margin-left:10px;">
+				<p:outputLabel value="Número do quarto:"></p:outputLabel>
+				<br />
+				<p:inputText value="#{quartoForm.quarto.numero}"
+					style="margin-top:20px;" required="true"
+					validatorMessage="Número obrigatório!">
+					<f:validateDoubleRange minimum="1.00"></f:validateDoubleRange>
+				</p:inputText>
+				<br />
+				<p:outputLabel value="Capacidade de ocupação: " />
+				<br />
+				<p:inputText value="#{quartoForm.quarto.capacidade}"
+					style="margin-top:20px;" required="true"
+					validatorMessage="Campo capacidade obrigatório!">
+					<f:validateDoubleRange minimum="1.00"></f:validateDoubleRange>
+				</p:inputText>
+				<br />
+				<p:outputLabel value="Valor da diária:" />
+				<br />
+				<p:inputText value="#{quartoForm.quarto.valorDiaria}"
+					style="margin-top:20px;" required="true"
+					validatorMessage="Valor da diária obrigatório!">
+					<f:validateDoubleRange minimum="1.00"></f:validateDoubleRange>
+				</p:inputText>
+				<br />
+				<p:outputLabel value="Status da ocupação:" />
+				<br />
+				<p:selectOneRadio value="#{quartoForm.quarto.status}"
+					style="margin-top:10px;">
+					<f:selectItem itemLabel="Ocupado" itemValue="Ocupado"></f:selectItem>
+					<br />
+					<f:selectItem itemLabel="Desocupado" itemValue="Desocupado"></f:selectItem>
+				</p:selectOneRadio>
+				<br />
+				<h:commandButton value="Cadastrar"
+					style="margin-top:19px;width:80px;height:33px;background-color:#496077;color:white;"
+					action="#{quartoForm.inserir}"></h:commandButton>
+				<h:messages></h:messages>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Sistema de Hotelaria - Página Inicial</title>
+	<link href="Estilos.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<div class="page">
+		<div class="header">
+			<div class="title">
+				<h1>Sistema de Hotelaria - Página Inicial</h1>
+			</div>
+			<div class="loginDisplay">
+				<h:form>
+					<p:commandButton value="Efetuar Login"
+						style="background-color:#496077;color:white;margin-top:10px;margin-right:4px;"
+						action="#{usuarioForm.acessoLogin}"></p:commandButton>
+				</h:form>
+			</div>
+			<div class="menu"></div>
+		</div>
+		<div class="main">
+			<h2 style="margin-left: 9px;">Seja bem-vindo ao Sistema de
+				Hotelaria.</h2>
+			<p style="margin-left: 9px;">Efetue login acima para iniciar.</p>
+		</div>
+	</div>
+</h:body>
+</html>

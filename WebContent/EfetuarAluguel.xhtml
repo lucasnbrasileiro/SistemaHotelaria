@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Hotelaria - Efetuar Aluguel</title>
+	<link href="Estilos.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<div class="page">
+		<div class="header">
+			<div class="title">
+				<h1>Sistema de Hotelaria - Efetuar Aluguel</h1>
+			</div>
+			<div class="loginDisplay">
+				<h5 style="margin-right: 10px;">
+					Bem-vindo(a),
+					<h:outputText value="#{usuarioForm.usuario.nome}"></h:outputText><br/>
+					<h:outputText value="#{usuarioForm.dataAtual}" style="color:white;"/>
+				</h5>
+			</div>
+			<div class="menu"></div>
+		</div>
+		<div class="main">
+			<h:form style="margin-left:10px;">
+				<p:outputLabel value="Cliente solicitante:" style="margin-top:5px;"/>
+				<br />
+				<p:selectOneMenu value="#{aluguelForm.u.idUsuario}" required="true">
+					<f:selectItem itemLabel="Selecione um cliente..." />
+					<f:selectItems value="#{usuarioForm.usuarios}" var="usu"
+						itemLabel="#{usu.nome}" itemValue="#{usu.idUsuario}"></f:selectItems>
+				</p:selectOneMenu>
+				<br />
+				<p:outputLabel value="Quarto desejado:" style="margin-top:5px;" />
+				<br />
+				<p:selectOneMenu value="#{aluguelForm.q.idQuarto}" required="true">
+					<f:selectItem itemLabel="Selecione um quarto..." />
+					<f:selectItems value="#{quartoForm.quartos}" var="qua" 
+					itemLabel="#{qua.numero}" itemValue="#{qua.idQuarto}"></f:selectItems>
+				</p:selectOneMenu>
+				<br />
+				<p:outputLabel value="Quantidade de pessoas: " />
+				<br />
+				<p:inputText value="#{aluguelForm.a.qtdPessoas}"
+					style="margin-top:10px;" required="true" validatorMessage="Quantidade mínima obrigatória!">
+					<f:validateDoubleRange minimum="1.00"></f:validateDoubleRange>
+				</p:inputText>	
+				<br />
+				<p:outputLabel value="Data de entrada:" />
+				<br />
+				<p:calendar effect="drop" pattern="yyyy-MM-dd HH:mm"
+					showButtonPanel="true" navigator="true"
+					value="#{aluguelForm.a.dataEntrada}" required="true" validatorMessage="Data de entrada deve ser atual ou posterior!" validator="#{aluguelForm.validarDataInicial}">
+					<f:convertDateTime pattern="yyyy-MM-dd HH:mm"></f:convertDateTime>		
+				</p:calendar>
+				<br />
+				<p:outputLabel value="Data de sáida:" />
+				<br />
+				<p:calendar effect="drop" pattern="yyyy-MM-dd HH:mm"
+					showButtonPanel="true" navigator="true"
+					value="#{aluguelForm.a.dataSaida}" required="true" validatorMessage="Data de saída deve ser posterior a data de entrada!" validator="#{aluguelForm.validarDataFinal}">
+					<f:convertDateTime pattern="yyyy-MM-dd HH:mm"></f:convertDateTime>
+				</p:calendar>
+				<br />
+				<h:commandButton value="Efetuar"
+					style="margin-top:19px;width:80px;height:33px;background-color:#496077;color:white;"
+					action="#{aluguelForm.inserir}"></h:commandButton>
+				<h:messages></h:messages>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>

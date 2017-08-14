@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Hotelaria - Detalhes da Conta</title>
+	<link href="Estilos.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<div class="page">
+		<div class="header">
+			<div class="title">
+				<h1>Sistema de Hotelaria - Detalhes da Conta - Validação</h1>
+			</div>
+			<div class="loginDisplay">
+				<h5 style="margin-right: 10px;">
+					Bem-vindo(a),
+					<h:outputText value="#{usuarioForm.usuario.nome}"></h:outputText><br/>
+					<h:outputText value="#{usuarioForm.dataAtual}" style="color:white;"/>
+				</h5>
+			</div>
+			<div class="menu"></div>
+		</div>
+		<div class="main">
+			<h:form style="margin-left:1px;" prependId="false">
+				<p:outputLabel value="Informe o código do seu aluguel:"></p:outputLabel>
+				<br />
+				<p:inputText value="#{consumoForm.idAluguel}"
+					style="margin-top:12px;margin-left:1px;width:183px;"></p:inputText>
+				<br />		
+				<h:commandButton value="Validar"
+					style="margin-top:19px;width:80px;height:33px;background-color:#496077;color:white;"
+					action="#{consumoForm.exibirDetalhesConta}">
+					
+					</h:commandButton>			
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>
